@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fair Distribution WhatsApp Link</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Define the WhatsApp links with pre-text for each salesperson
+        var numbers = [
+            'https://wa.me/+601163904091?text=Hi dan Salam Aiman Farhan, boleh saya nak tanya pasal trip by Hararei Travel?',  // Salesperson 1
+            'https://wa.me/+601139984091?text= Hi dan Salam Adib Safwan, boleh saya nak tanya pasal trip by Hararei Travel?',  // Salesperson 2
+            'https://wa.me/+601161244091?text= Hi dan Salam Aiman Noradi, boleh saya nak tanya pasal trip by Hararei Travel?'   // Salesperson 3
+        ];
+
+        // Check if there's a stored value for the last assigned salesperson index in localStorage
+        var currentIndex = localStorage.getItem('currentIndex');
+
+        // If the value doesn't exist in localStorage (i.e., first click), start at the first salesperson (index 0)
+        if (currentIndex === null) {
+            currentIndex = 0;
+        } else {
+            // Increment the index and ensure it loops back to 0 after reaching the last salesperson
+            currentIndex = (parseInt(currentIndex) + 1) % numbers.length;
+        }
+
+        // Store the new index back to localStorage for the next time
+        localStorage.setItem('currentIndex', currentIndex);
+
+        // Redirect to the selected WhatsApp link based on the current index
+        window.location.href = numbers[currentIndex];
+    </script>
+</body>
+</html>
